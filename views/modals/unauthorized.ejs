@@ -1,0 +1,44 @@
+<link rel="stylesheet" type="text/css" href="/wintergarten.css">
+<link href="css/bootstrap-iso.css" rel="stylesheet">
+
+
+
+<div class="modal--container" data-component="modal-login">
+  <div class="modal--body">
+    <header class="text-center">
+      <i class="icon-camera-black icon--large"></i>
+    </header>
+    <div class="bootstrap-iso">
+      <div id="ottsignin" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">SIGN IN</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form action="/login" method="post" class="form">
+                <div class="form-group">
+                  <label class="col-form-label">Username:</label>
+                  <input class="form-control" id="message-text" type="text" name="username" /><br/>
+                </div>
+                <div class="form-group">
+                  <label class="col-form-label">Password:</label>
+                  <input class="form-control" id="message-text" type="password" name="password" />
+                </div>
+                <div class="modal-footr">
+                  <button type="submit">Sign In</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal--bg bg-white-transparent"></div>
+</div>
+
+<script type="text/javascript" src="js/wintergarten.js"></script>

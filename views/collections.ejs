@@ -1,0 +1,22 @@
+<section data-component="collections" class="padding-large">
+
+  <% collections.forEach(function(collection) { %>
+    <h2 class="margin-left-medium padding-bottom-small head-2 border--bottom"><%= collection.name %></h2>
+    <ul class="row padding-bottom-large" data-id="<%= collection.id %>">
+      <% collection.items.forEach(function(item) { %>
+        <li class="col small-1-1 medium-1-2 large-1-4 padding-medium" data-component="item">
+          <h3 class="head-3 margin-bottom-small truncate"><%= item.name %></h3>
+          <a href="/watch/<%= item.id %>" class="ratio ratio--16-9">
+          <img src="<%= item.thumbnail.medium %>" class="fill-width">
+        </a>
+          <div class="is-hidden">
+            <%= item.description %>
+          </div>
+        </li>
+        <% }) %>
+    </ul>
+
+
+
+    <% }) %>
+</section>

@@ -1,0 +1,240 @@
+<title>MY DEMO</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.7/css/mdb.min.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- Bootstrap core CSS -->
+<link href="css/bootstrap-iso.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="css/mdb.min.css" rel="stylesheet">
+<!-- Your custom styles (optional) -->
+<link href="css/style.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/wintergarten.css">
+<link rel="stylesheet" href="http://fortawesome.github.io/Font-Awesome/assets/font-awesome/css/font-awesome.css">
+<link rel="stylesheet" type="text/css" href="/mydemo.css">
+
+<body>
+  <!-- !PAGE CONTENT! -->
+  <div class="w3-content" style="max-width:1500px">
+
+    <!-- Header -->
+    <header class="w3-container w3-xlarge w3-padding-24">
+      <a href="/" class="w3-left w3-button w3-white">MY DEMO</a>
+      <a href="#about" class="w3-right w3-button w3-white">Partners</a>
+      <a href="#analytics" class="w3-right w3-button w3-white">Analytics</a>
+      <a href="#analytics" class="w3-right w3-button w3-white">Live</a>
+      <a href="#about" class="w3-right w3-button w3-white">Shop</a>
+      <% if (user) { %>
+      	<p>Hello, <%=user.username %>. View your <a href="/profile">profile</a>.</p>
+      <% } %>
+    </header>
+
+    <!-- Video Carousel -->
+
+    <% include ./carousel %>
+
+
+      <div class="bootstrap-iso">
+
+        <!-- Buttons -->
+        <div class="container">
+          <div id="my_centered_buttons" style="width: 100%;">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signin" style="margin:15px;">
+  SIGN IN
+  </button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ottsignin" style="margin:15px;">
+VIMEO OTT
+</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signup" style="margin:15px;">
+    SIGN UP
+  </button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#subscribe" style="margin:15px;">
+  SUBSCRIBE
+  </button>
+          </div>
+        </div>
+
+        <!-- Sign In Modal-->
+        <div class="modal fade" id="signin" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">SIGN IN</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+              </div>
+              <div class="modal-body">
+                <form action="/login" method="post" class="form">
+                  <div class="form-group">
+                    <label class="col-form-label">Username:</label>
+                    <input class="form-control" id="message-text" type="text" name="username" /><br/>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-form-label">Password:</label>
+                    <input class="form-control" id="message-text" type="password" name="password" />
+                  </div>
+                  <div class="modal-footer">
+                    <button type="submit">Sign In</button>
+                  </div>
+                </form>
+
+                <p class="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2"> Or Sign in with:</p>
+                <div class="row my-3 d-flex justify-content-center">
+                  <div class="icons">
+                    <!--Facebook-->
+                    <button type="button" class="btn btn-white btn-rounded mr-md-3 z-depth-1a"><a href="#" class="fa fa-facebook"></a></button>
+                    <!--Twitter-->
+                    <button type="button" class="btn btn-white btn-rounded mr-md-3 z-depth-1a"><a href="#" class="fa fa-twitter"></a></button>
+                    <!--Google +-->
+                    <button type="button" class="btn btn-white btn-rounded z-depth-1a"><a href="#" class="fa fa-google"></a></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Vimeo OTT Sign In Modal-->
+        <div class="modal fade" id="ottsignin" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">SIGN IN</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+              </div>
+              <div class="modal-body">
+                <form action="/ottsignin" method="post" class="form">
+                  <div class="form-group">
+                    <label class="block margin-bottom-xsmall">Email</label>
+                    <input type="email" name="email" value="Email" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label class="col-form-label">Password:</label>
+                  <input type="password" name="password" value="Password" class="form-control">
+                  </div>
+                  <div class="modal-footer">
+                    <button type="submit">Sign In</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Sign Up Modal-->
+        <div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">SIGN UP</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+              </div>
+              <div class="modal-body">
+                <form action="/signup" method="post" class="form" data-prop="action-signup">
+                  <div class="form-group">
+                    <label class="block margin-bottom-xsmall">Full Name</label>
+                    <input type="text" name="customer[name]" value="Customer Name" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label class="block margin-bottom-xsmall">Email</label>
+                    <input type="email" name="customer[email]" value="Email" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label class="block margin-bottom-xsmall">Password</label>
+                    <input type="password" name="customer[password]" value="Password" class="form-control">
+                  </div>
+                  <div class="modal-footer">
+                    <button type="submit">Sign Up</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Subscribe Modal-->
+        <div class="modal fade" id="subscribe" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">SUBSCRIBE</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+              </div>
+              <div class="modal-body">
+                <form action="/subscribe" method="post" class="form" data-prop="action-join">
+                  <div class="form-group">
+                    <label class="block margin-bottom-xsmall">Full Name</label>
+                    <input type="text" name="customer[name]" value="Customer Name" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label class="block margin-bottom-xsmall">Email</label>
+                    <input type="email" name="customer[email]" value="Email" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label class="block margin-bottom-xsmall">Credit Card Number</label>
+                    <input data-card-number type="text" value="4111 1111 1111 1111" class="fill-width">
+                    </fieldset>
+                  </div>
+                  <div class="row margin-vert-medium">
+                    <fieldset class="col small-1-1 medium-1-3 padding-right-small" data-expiry>
+                      <label class="block margin-bottom-xsmall">Expiration</label>
+                      <input data-expiry-month type="number" value="12">/
+                      <input data-expiry-year type="number" value="19">
+                    </fieldset>
+                    <fieldset class="col small-1-1 medium-1-3 padding-horz-small">
+                      <label class="block margin-bottom-xsmall">CVC</label>
+                      <input type="number" value="123">
+                    </fieldset>
+                    <fieldset class="col small-1-1 medium-1-3 padding-left-small">
+                      <label class="block margin-bottom-xsmall">Postal Code</label>
+                      <input type="number" value="12345">
+                    </fieldset>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="submit">Subscribe</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+  </div>
+  <!-- End Page Content -->
+  <!-- Footer / About Section -->
+  <footer class="w3-light-grey w3-padding-64 w3-center" id="analytics">
+  </footer>
+
+  <% include ./collections %>
+
+    <!-- Remember to include jQuery :) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+
+    <!-- jQuery Modal -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.7/js/mdb.min.js"></script>
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>

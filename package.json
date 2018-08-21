@@ -1,0 +1,49 @@
+{
+  "name": "express-4.x-local-example",
+  "version": "0.0.0",
+  "description": "Express 4.x app using Passport for authentication with username and password.",
+  "keywords": [
+    "example",
+    "express",
+    "passport"
+  ],
+  "author": "Jared Hanson",
+  "license": "Unlicense",
+  "homepage": "https://github.com/passport/express-4.x-local-example",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/passport/express-4.x-local-example.git"
+  },
+  "bugs": {
+    "url": "https://github.com/passport/express-4.x-local-example/issues"
+  },
+  "dependencies": {
+    "async": "^2.6.1",
+    "body-parser": "^1.13.3",
+    "connect-ensure-login": "^0.1.1",
+    "cookie-parser": "^1.3.5",
+    "data-components": "^0.3.2",
+    "dotenv": "^6.0.0",
+    "ejs": "^2.3.3",
+    "ejs-lint": "^0.3.0",
+    "express": "^4.13.3",
+    "express-session": "^1.15.6",
+    "hbs": "^4.0.1",
+    "jquery": "^3.3.1",
+    "mdbootstrap": "^4.5.9",
+    "modal": "^1.2.0",
+    "morgan": "^1.6.1",
+    "parser": "^0.1.4",
+    "passport": "^0.2.2",
+    "passport-local": "^1.0.0",
+    "uuid": "^3.3.2",
+    "vhx": "^1.8.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.6",
+    "babel-register": "^6.26.0",
+    "eslint": "^5.4.0",
+    "eslint-plugin-babel": "^5.1.0",
+    "less": "^3.8.1"
+  }
+}
