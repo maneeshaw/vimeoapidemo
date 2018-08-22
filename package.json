@@ -36,6 +36,7 @@
     "parser": "^0.1.4",
     "passport": "^0.2.2",
     "passport-local": "^1.0.0",
+    "request": "^2.88.0",
     "uuid": "^3.3.2",
     "vhx": "^1.8.0"
   },

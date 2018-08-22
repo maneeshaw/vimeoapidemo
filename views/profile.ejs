@@ -10,4 +10,13 @@
 </p>
 <a href="/logout">Log out</a>
 
-<a href="<%= otturl%>">OTT URL</a>
+<a href="<%= otturl%>">OTT URL</a> var request = require("request");
+
+<div>
+  <% watchlist.forEach(function(list) { %>
+    <div>
+      <h3><%= list.name %></h3>
+      <img src="<%= list.thumbnail.medium %>" width="200" />
+    </div>
+    <% }) %>
+</div>

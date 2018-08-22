@@ -5,6 +5,7 @@ require('dotenv').load()
 let ottSignin = require('./endpoints/ottsignin')
 let ottProfile = require('./endpoints/ottprofile')
 let watchVideo = require('./endpoints/watchvideo')
+let profile = require('./endpoints/profile')
 
 let express = require('express')
 let passport = require('passport')
@@ -15,6 +16,7 @@ let cookie = require('cookie-parser')
 let parser = require('body-parser')
 // let async = require('async')
 let vhx = require('vhx')(process.env.VHX_API_KEY)
+
 const uuid = require('uuid')
 
 const app = express()
@@ -181,8 +183,6 @@ app.post(
   }
 )
 
-let http = require('https')
-
 app.get('/signup', function(req, res) {
   res.send('signup')
 })
@@ -223,18 +223,7 @@ app.get('/logout', function(req, res) {
   res.redirect('/')
 })
 
-app.get('/profile', require('connect-ensure-login').ensureLoggedIn(), function(
-  req,
-  res
-) {
-  const customerurl = 'https://api.vhx.tv/videos/' + req.user.ottid
-  vhx.customers.retrieve(customerurl, function(err, customer) {
-    console.error(err)
-    const otturl = customer._embedded.products[0]._links.browse_page.href
-    res.render('profile', { user: req.user, otturl, customer })
-    console.log(otturl)
-  })
-})
+app.get('/profile', require('connect-ensure-login').ensureLoggedIn(), profile)
 
 app.get('/ottprofile', ottProfile)
 
