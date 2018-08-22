@@ -1,6 +1,6 @@
 let vhx = require('vhx')(process.env.VHX_API_KEY)
 
-export default function(req, res) {
+module.exports = function(req, res) {
   let customerId = req.query.customerId
   let url = 'https://api.vhx.tv/customers/' + customerId
   vhx.customers.retrieve(url, function(err, customer) {

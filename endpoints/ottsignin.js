@@ -1,6 +1,6 @@
 let http = require('https')
 
-export default function(req, res) {
+module.exports = function(req, res) {
   let options = {
     method: 'POST',
     hostname: 'mydemo.vhx.tv',

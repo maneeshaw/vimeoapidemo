@@ -2,9 +2,9 @@ require('./babel-register')
 require('dotenv').load()
 
 // endpoints
-let ottSignin = require('./ottsignin')
-let ottProfile = require('./ottprofile')
-let watchVideo = require('./watchvideo')
+let ottSignin = require('./endpoints/ottsignin')
+let ottProfile = require('./endpoints/ottprofile')
+let watchVideo = require('./endpoints/watchvideo')
 
 let express = require('express')
 let passport = require('passport')

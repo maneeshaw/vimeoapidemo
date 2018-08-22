@@ -1,4 +1,5 @@
 require('babel-register')({
+  presets: ['env']
   // Optional ignore regex - if any filenames **do** match this regex then they
   // aren't compiled.
   // ignore: /regex/,
