@@ -1,14 +1,14 @@
 <p>
   Name:
-  <%= user.displayName %><br/>
-    <% if (user.emails) { %>
+  <%= user.name %><br/>
+    <% if (user.email) { %>
       Email:
-      <%= user.emails[0].value %><br/>
+      <%= user.email %><br/>
         <% } %>
 </p>
 <a href="/logout">Log out</a>
 
-<a href="<%= otturl%>">OTT URL</a> var request = require("request");
+<a href="<%= otturl%>">OTT URL</a>
 
 <div>
   <% watchlist.forEach(function(list) { %>

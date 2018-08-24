@@ -6,7 +6,6 @@ module.exports = function(req, res) {
     url: 'https://mydemo.vhx.tv/LOGIN',
     headers: {
       'Cache-Control': 'no-cache',
-      Authorization: 'Basic dUpYUjJwR0h2MUVwV2J4S21lWU02QWtUQ0trUloxblI6Og==',
       'Content-Type': 'application/json',
       Accept: 'application/json'
     },
@@ -20,12 +19,12 @@ module.exports = function(req, res) {
     },
     json: true
   }
-
   request(options, function(error, response, body) {
     if (error) throw new Error(error)
-
-    console.log(body)
-    let data = JSON.parse(body)
-    res.redirect('/ottprofile')
+    let customerID = response.headers['x-user-id']
+    // console.log('headers', response.headers)
+    console.log('signin body', body)
+    // let data = JSON.parse(body)
+    res.redirect('/ottprofile?customerID=' + customerID)
   })
 }

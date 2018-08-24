@@ -179,6 +179,7 @@ app.post(
   '/login',
   passport.authenticate('local', { failureRedirect: '/login' }),
   function(req, res) {
+    console.log(req.body)
     res.redirect('/profile')
   }
 )
@@ -249,6 +250,28 @@ app.get('/items.json', function(req, res) {
 })
 
 app.get('/watch/:video_id', watchVideo)
+
+const API_SECRET = '0cSyUFifxcIuWa5diZkIhBlircT39dgU'
+let request = require('request')
+let livedata
+app.get('/live', function(req, res) {
+  let options = {
+    url:
+      'https://livestreamapis.com/v3/accounts/27551527/events/8341479/videos',
+    auth: {
+      username: API_SECRET
+    }
+  }
+  request.get(options, function(err, response, body) {
+    if (err) {
+      console.error('livestream api call failed ', err)
+      return res.send(err)
+    }
+    // res.setHeader('Content-Type', 'application/json')
+    livedata = {}
+    res.render('live', livedata)
+  })
+})
 
 console.log('App is ready!')
 app.listen(3000)
