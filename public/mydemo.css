@@ -367,3 +367,40 @@
   font-family: 'arial';
   text-align: center;
 }
+
+.example_c {
+  color: #494949 !important;
+  text-transform: uppercase;
+  background: #ffffff;
+  padding: 20px;
+  border: 1px solid #494949 !important;
+  border-radius: 6px;
+  display: inline-block;
+  width: 200px;
+}
+
+.example_c:hover {
+  color: #ffffff !important;
+  background: #007bff;
+  border-color: #007bff !important;
+  transition: all 0.4s ease 0s;
+  width: 200px;
+}
+
+.example_c.active {
+  color: #ffffff !important;
+  background: #007bff;
+  border-color: #007bff !important;
+  transition: all 0.4s ease 0s;
+  width: 200px;
+}
+
+.inline-block-child {
+  display: inline-block;
+  align-items: center;
+  margin: 10px;
+}
+.title {
+  color: grey;
+  font-size: 18px;
+}

@@ -1,37 +1,64 @@
-
 <link rel="stylesheet" type="text/css" href="/wintergarten.css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<style>
+  .checked {
+    color: orange;
+  }
+</style>
 <div class="w3-content" style="max-width:1500px">
 
   <!-- Header -->
   <header class="w3-container w3-xlarge w3-padding-24">
     <a href="/" class="w3-left w3-button w3-white">MY DEMO</a>
+    <a href="#about" class="w3-right w3-button w3-white">Search</a>
     <a href="#about" class="w3-right w3-button w3-white">Partners</a>
+    <a href="/analytics" class="w3-right w3-button w3-white">Analytics</a>
+    <a href="/live" class="w3-right w3-button w3-white">Live</a>
     <a href="#about" class="w3-right w3-button w3-white">Shop</a>
-    <a href="#analytics" class="w3-right w3-button w3-white">Analytics</a>
   </header>
 
-
-<body>
-<section class="row bg-cover carousel-item">
-  <div class="small-centered text-center padding-vert-large ratio ratio--5-2">
-    <div data-component="player">
-      <div class="ratio ratio--5-2">
-        <iframe src="https://embed.vhx.tv/videos/<%= itemid %>?api=1&tracking=0" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+  <body>
+    <section class="row bg-cover carousel-item">
+      <div class="small-centered text-center padding-vert-large ratio ratio--5-2">
+        <div data-component="player">
+          <div class="ratio ratio--5-2">
+            <iframe src="https://embed.vhx.tv/videos/<%= itemid %>?api=1&tracking=0" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
-<section class="small-centered small-1-1 medium-1-2">
-  <header class="row margin-vert-medium">
-    <h2 class="col small-1-1 medium-1-2 head-2 text-left"><%= itemname %></h2>
-  </header>
-  <div class="text-3">
-    <%= itemdescription %>
-  </div>
-</section>
-
-</body>
+      <div class="padding-large">
+        <header class="margin-vert-medium">
+          <h2 class="small-1-1 medium-1-2 head-2 text-left"><%= itemname %></h2>
+        </header>
+        <div class="text-3">
+          <%= itemdescription %>
+        </div>
+        <h2 class="col small-1-1 medium-1-2 head-2 text-left"></h2>
+        <div class="text-3">
+          <h2 class="small-1-1 medium-1-2 head-2">Director</h2>
+          <%= Director %>
+        </div>
+        <div class="text-3">
+          <h2 class="small-1-1 medium-1-2 head-2">Sounds</h2>
+          <%= Sounds %>
+        </div>
+        <div class="text-3">
+          <h2 class="small-1-1 medium-1-2 head-2">Available</h2>
+          <a href="<%= Available %>">
+            <%= Available %>
+          </a>
+        </div>
+        <h2 class="small-1-1 medium-1-2 head-2 text-left">Star Rating</h2>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+      </div>
+    </section>
+  </body>
 
 </div>

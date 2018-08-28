@@ -155,8 +155,13 @@ app.get('/', async function(req, res) {
     carousel: carousel,
     session: req.session
   }
-  console.log(homeData.user)
-  res.render('home', homeData)
+  console.log(req.user)
+  res.render('home', {
+    user: req.user,
+    collections,
+    carousel: carousel,
+    session: req.session
+  })
 })
 
 app.get('/carouselplayer', function(req, res) {
@@ -166,21 +171,20 @@ app.get('/carouselplayer', function(req, res) {
     res.render('carouselplayer', {
       carouselitemid: req.query.id,
       carouselitemname: video.title,
-      carouselitemdescription: video.description
+      carouselitemdescription: video.description,
+      Director: video.metadata.Director,
+      Sounds: video.metadata.Sounds,
+      Available: video.metadata.Available
     })
   })
 })
 
-app.get('/login', function(req, res) {
-  res.render('login')
-})
-
 app.post(
   '/login',
-  passport.authenticate('local', { failureRedirect: '/login' }),
+  passport.authenticate('local', { failureRedirect: '/' }),
   function(req, res) {
     console.log(req.body)
-    res.redirect('/profile')
+    res.redirect('/')
   }
 )
 
@@ -271,6 +275,14 @@ app.get('/live', function(req, res) {
     livedata = {}
     res.render('live', livedata)
   })
+})
+
+app.get('/payments', function(req, res) {
+  res.render('payments')
+})
+
+app.get('/analytics', function(req, res) {
+  res.render('analytics')
 })
 
 console.log('App is ready!')

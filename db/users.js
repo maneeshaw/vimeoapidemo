@@ -4,7 +4,7 @@ let records = [
     username: 'jack',
     password: 'secret',
     displayName: 'Jack Smith',
-    emails: [{ value: 'jack@example.com' }],
+    email: 'jack@example.com',
     ottid: 4597383
   },
   {
@@ -12,7 +12,7 @@ let records = [
     username: 'jill',
     password: 'birthday',
     displayName: 'Jill Smith',
-    emails: [{ value: 'jill@example.com' }],
+    email: 'jill@example.com',
     ottid: 4601002
   }
 ]

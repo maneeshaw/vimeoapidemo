@@ -11,7 +11,7 @@ module.exports = (req, res) => {
 
     let watchlistRequest = {
       method: 'GET',
-      url: 'https://api.vhx.tv/customers/4597383/watchlist',
+      url: `https://api.vhx.tv/customers/${req.user.ottid}/watchlist`,
       headers: {
         'Cache-Control': 'no-cache',
         Authorization: 'Basic dUpYUjJwR0h2MUVwV2J4S21lWU02QWtUQ0trUloxblI6Og=='

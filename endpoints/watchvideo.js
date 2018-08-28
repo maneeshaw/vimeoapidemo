@@ -13,7 +13,10 @@ module.exports = function(req, res) {
       res.render('publicplayer', {
         itemid: video.id,
         itemname: video.title,
-        itemdescription: video.description
+        itemdescription: video.description,
+        Director: video.metadata.Director,
+        Sounds: video.metadata.Sounds,
+        Available: video.metadata.Available
       })
       return
     }

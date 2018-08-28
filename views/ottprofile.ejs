@@ -1,20 +1,55 @@
-<p>
-  Name:
-  <%= user.name %><br/>
-    <% if (user.email) { %>
-      Email:
-      <%= user.email %><br/>
-        <% } %>
-</p>
-<a href="/logout">Log out</a>
+<title>MY DEMO</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.7/css/mdb.min.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- Bootstrap core CSS -->
+<link href="css/bootstrap-iso.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="css/mdb.min.css" rel="stylesheet">
+<!-- Your custom styles (optional) -->
+<link href="css/style.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/wintergarten.css">
+<link rel="stylesheet" href="http://fortawesome.github.io/Font-Awesome/assets/font-awesome/css/font-awesome.css">
+<link rel="stylesheet" type="text/css" href="/mydemo.css">
 
-<a href="<%= otturl%>">OTT URL</a>
 
-<div>
-  <% watchlist.forEach(function(list) { %>
+<body>
+
+  <!-- !PAGE CONTENT! -->
+  <div class="w3-content" style="max-width:1500px">
+
+    <!-- Header -->
+    <header class="w3-container w3-xlarge w3-padding-24">
+      <a href="/" class="w3-left w3-button w3-white">MY DEMO</a>
+      <a href="#about" class="w3-right w3-button w3-white">Search</a>
+      <a href="#about" class="w3-right w3-button w3-white">Partners</a>
+      <a href="/analytics" class="w3-right w3-button w3-white">Analytics</a>
+      <a href="#analytics" class="w3-right w3-button w3-white">Live</a>
+      <a href="#about" class="w3-right w3-button w3-white">Shop</a>
+    </header>
+
+    <p>
+      Name:
+      <%= user.name %><br/>
+        <% if (user.email) { %>
+          Email:
+          <%= user.email %><br/>
+            <% } %>
+    </p>
+    <a href="/logout">Log out</a>
+
+    <a href="<%= otturl%>">OTT URL</a>
+
     <div>
-      <h3><%= list.name %></h3>
-      <img src="<%= list.thumbnail.medium %>" width="200" />
+      <% watchlist.forEach(function(list) { %>
+        <div>
+          <h3><%= list.name %></h3>
+          <img src="<%= list.thumbnail.medium %>" width="200" />
+        </div>
+        <% }) %>
     </div>
-    <% }) %>
-</div>
+
+</body>
