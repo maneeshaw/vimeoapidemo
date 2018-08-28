@@ -255,7 +255,7 @@ app.get('/items.json', function(req, res) {
 
 app.get('/watch/:video_id', watchVideo)
 
-const API_SECRET = '0cSyUFifxcIuWa5diZkIhBlircT39dgU'
+const API_SECRET = process.env.LIVESTREAM_API_SECRET
 let request = require('request')
 let livedata
 app.get('/live', function(req, res) {
@@ -285,5 +285,6 @@ app.get('/analytics', function(req, res) {
   res.render('analytics')
 })
 
-console.log('App is ready!')
-app.listen(3000)
+const port = process.env.PORT || 3000
+console.log('App is ready on port ' + port + '!')
+app.listen(port)
