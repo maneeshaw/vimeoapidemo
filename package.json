@@ -1,12 +1,9 @@
 {
   "name": "express-4.x-local-example",
   "version": "0.0.0",
-  "description": "Express 4.x app using Passport for authentication with username and password.",
-  "keywords": [
-    "example",
-    "express",
-    "passport"
-  ],
+  "description":
+    "Express 4.x app using Passport for authentication with username and password.",
+  "keywords": ["example", "express", "passport"],
   "author": "Jared Hanson",
   "license": "Unlicense",
   "homepage": "https://github.com/passport/express-4.x-local-example",
