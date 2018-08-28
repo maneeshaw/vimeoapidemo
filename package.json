@@ -47,5 +47,9 @@
     "eslint": "^5.4.0",
     "eslint-plugin-babel": "^5.1.0",
     "less": "^3.8.1"
-  }
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "main": "babel-register.js"
 }
