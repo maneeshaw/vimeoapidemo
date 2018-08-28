@@ -46,7 +46,7 @@
     "less": "^3.8.1"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "NODE_ENV=production && node server.js"
   },
   "main": "babel-register.js"
 }
