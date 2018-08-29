@@ -12,6 +12,7 @@ let vhx = require('vhx')(process.env.VHX_API_KEY)
 const uuid = require('uuid')
 const app = express()
 
+global.vhxUsers = {}
 /** bodyParser.urlencoded(options)
  * Parses the text as URL encoded data (which is how browsers tend to send form data from regular forms set to POST)
  * and exposes the resulting object (containing the keys and values) on req.body
@@ -99,12 +100,10 @@ app.use(
 app.use(passport.initialize())
 app.use(passport.session())
 
-// Define routes.
-
+/** ************************ ROUTES ********************************* **/
 const SUBSCRIBERS = 71341
 const REGISTERED = 69075
 const PUBLIC = 69078
-
 const homepageCollections = [SUBSCRIBERS, REGISTERED, PUBLIC]
 
 app.get('/', async function(req, res) {
@@ -144,11 +143,19 @@ app.get('/', async function(req, res) {
     }
     collection.items = itemsData
   })
-
+  const customerID =
+    req.session.customer_href &&
+    req.session.customer_href.split('https://api.vhx.tv/customers/')[1]
+  const vhxUser = global.vhxUsers[customerID] || {}
+  console.log('vhx customerID', customerID)
   console.log('/ -> req.user', req.user)
   console.log('/ -> req.session', req.session)
+  console.log('/ -> vhxUser', vhxUser)
+  const user = {
+    displayName: (req.user && req.user.displayName) || vhxUser.name
+  }
   res.render('home', {
-    user: req.user,
+    user: user,
     collections,
     carousel: carouselData,
     session: req.session
@@ -195,6 +202,8 @@ app.post('/signup', function(req, res) {
       },
       function(err, customer) {
         console.error(err)
+        global.vhxUsers[customer.id] = customer
+        console.log('ott /signup customer created', customer)
         req.session.customer_href =
           'https://api.vhx.tv/customers/' + customer.id
         res.redirect(redirect)

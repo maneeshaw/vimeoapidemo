@@ -5,6 +5,9 @@ module.exports = function(req, res) {
   let customerID = req.query.customerID
   let url = 'https://api.vhx.tv/customers/' + customerID
   vhx.customers.retrieve(url, function(err, customer) {
+    if (err || !customer) {
+      return res.send('login failed. please try again')
+    }
     const otturl = customer._embedded.products[0]._links.browse_page.href
     let watchlistRequest = {
       method: 'GET',

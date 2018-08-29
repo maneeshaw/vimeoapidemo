@@ -14,8 +14,7 @@ module.exports = function(req, res) {
       password: req.body.password,
       client_id:
         '36c626548a36c62ec32e656addee067cb44ab04fa61ab98bed43da2242f7aba3',
-      client_secret:
-        '8b136880d1eacf81bce0bce316d3be4f014eb8150907ab812268384ba0445bd3'
+      client_secret: process.env.VHX_CLIENT_SECRET
     },
     json: true
   }
@@ -23,7 +22,8 @@ module.exports = function(req, res) {
     if (error) throw new Error(error)
     let customerID = response.headers['x-user-id']
     // console.log('headers', response.headers)
-    console.log('signin body', body)
+    console.log('signin body' + customerID, body)
+    global.vhxUsers[customerID] = body.user
     // let data = JSON.parse(body)
     res.redirect('/ottprofile?customerID=' + customerID)
   })
