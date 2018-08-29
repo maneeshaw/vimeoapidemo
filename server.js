@@ -268,6 +268,10 @@ app.get('/analytics', function(req, res) {
   res.render('analytics')
 })
 
+app.get('/subscribed', function(req, res) {
+  res.render('subscribed')
+})
+
 const port = process.env.PORT || 3000
 console.log('App is ready on port ' + port + '!')
 app.listen(port)
