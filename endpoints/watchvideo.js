@@ -2,7 +2,7 @@ let vhx = require('vhx')(process.env.VHX_API_KEY)
 
 module.exports = function(req, res) {
   const url = 'https://api.vhx.tv/videos/' + req.params.video_id
-  console.log(url)
+  console.log('/watchvideos url', url)
   vhx.videos.retrieve(url, function(err, video) {
     console.error(err)
     if (!video || !video.id) {

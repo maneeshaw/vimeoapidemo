@@ -50,6 +50,7 @@ passport.use(
       if (user.password !== password) {
         return cb(null, false)
       }
+      console.log('successfully logged in (local)', user)
       return cb(null, user)
     })
   })
@@ -67,10 +68,12 @@ passport.serializeUser(function(user, cb) {
 })
 
 passport.deserializeUser(function(id, cb) {
+  console.log('deseralizing user: ' + id)
   db.users.findById(id, function(err, user) {
     if (err) {
       return cb(err)
     }
+    console.log('deserialize success:', user)
     cb(null, user)
   })
 })
@@ -82,7 +85,9 @@ app.use(
   session({
     resave: false,
     saveUninitialized: false,
-    genid: function() {
+    genid: function(req) {
+      console.log('Inside the session middleware')
+      console.log(req.sessionID)
       return uuid.v4()
     },
     secret: process.env.SESSION_SECRET
@@ -101,11 +106,11 @@ const REGISTERED = 69075
 const PUBLIC = 69078
 
 const homepageCollections = [SUBSCRIBERS, REGISTERED, PUBLIC]
-let homeData
+
 app.get('/', async function(req, res) {
-  if (homeData) {
-    return res.render('home', homeData)
-  }
+  console.log('Inside the homepage callback function')
+  console.log(req.sessionID)
+
   let collections = await new Promise((res, rej) => {
     vhx.collections.all({}, function(err, collections) {
       console.error(err)
@@ -131,26 +136,21 @@ app.get('/', async function(req, res) {
     })
   })
 
-  let carousel
+  let carouselData
   items.forEach((itemsData, i) => {
     let collection = collections[collectionIdxs[i]]
     if (collection.id === PUBLIC) {
-      carousel = itemsData
+      carouselData = itemsData
     }
     collection.items = itemsData
   })
 
-  homeData = {
-    user: req.user,
-    collections,
-    carousel: carousel,
-    session: req.session
-  }
-  console.log(req.user)
+  console.log('/ -> req.user', req.user)
+  console.log('/ -> req.session', req.session)
   res.render('home', {
     user: req.user,
     collections,
-    carousel: carousel,
+    carousel: carouselData,
     session: req.session
   })
 })
@@ -175,7 +175,7 @@ app.post(
   passport.authenticate('local', { failureRedirect: '/' }),
   function(req, res) {
     console.log('/login success', req.body)
-    // res.redirect('/')
+    res.redirect('/')
   }
 )
 
@@ -184,10 +184,9 @@ app.get('/signup', function(req, res) {
 })
 
 app.post('/signup', function(req, res) {
-  console.log(req.body)
+  console.log('/signup req.body', req.body)
   let redirect = req.body.redirect ? req.body.redirect : '/'
   if (req.body.customer) {
-    console.log(req.body)
     vhx.customers.create(
       {
         name: req.body.customer.name,
