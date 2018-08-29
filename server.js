@@ -1,12 +1,5 @@
 require('./babel-register')
 require('dotenv').load()
-
-// endpoints
-let ottSignin = require('./endpoints/ottsignin')
-let ottProfile = require('./endpoints/ottprofile')
-let watchVideo = require('./endpoints/watchvideo')
-let profile = require('./endpoints/profile')
-
 let express = require('express')
 let passport = require('passport')
 let Strategy = require('passport-local').Strategy
@@ -16,9 +9,7 @@ let cookie = require('cookie-parser')
 let parser = require('body-parser')
 // let async = require('async')
 let vhx = require('vhx')(process.env.VHX_API_KEY)
-
 const uuid = require('uuid')
-
 const app = express()
 
 /** bodyParser.urlencoded(options)
@@ -183,8 +174,8 @@ app.post(
   '/login',
   passport.authenticate('local', { failureRedirect: '/' }),
   function(req, res) {
-    console.log(req.body)
-    res.redirect('/')
+    console.log('/login success', req.body)
+    // res.redirect('/')
   }
 )
 
@@ -221,16 +212,20 @@ app.get('/subscribe', function(req, res) {
 //   res.render('collections')
 // })
 
-app.post('/ottsignin', ottSignin)
+app.post('/ottsignin', require('./endpoints/ottsignin'))
 
 app.get('/logout', function(req, res) {
   req.logout()
   res.redirect('/')
 })
 
-app.get('/profile', require('connect-ensure-login').ensureLoggedIn(), profile)
+app.get(
+  '/profile',
+  require('connect-ensure-login').ensureLoggedIn(),
+  require('./endpoints/profile')
+)
 
-app.get('/ottprofile', ottProfile)
+app.get('/ottprofile', require('./endpoints/ottprofile'))
 
 app.get('/userauth', function(req, res) {
   res.render('userauth')
@@ -253,29 +248,9 @@ app.get('/items.json', function(req, res) {
   )
 })
 
-app.get('/watch/:video_id', watchVideo)
+app.get('/watch/:video_id', require('./endpoints/watchvideo'))
 
-const API_SECRET = process.env.LIVESTREAM_API_SECRET
-let request = require('request')
-let livedata
-app.get('/live', function(req, res) {
-  let options = {
-    url:
-      'https://livestreamapis.com/v3/accounts/27551527/events/8341479/videos',
-    auth: {
-      username: API_SECRET
-    }
-  }
-  request.get(options, function(err, response, body) {
-    if (err) {
-      console.error('livestream api call failed ', err)
-      return res.send(err)
-    }
-    // res.setHeader('Content-Type', 'application/json')
-    livedata = {}
-    res.render('live', livedata)
-  })
-})
+app.get('/live', require('./endpoints/live'))
 
 app.get('/payments', function(req, res) {
   res.render('payments')
